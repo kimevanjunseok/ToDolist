@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>UPDATE</h1>
+    <form action="{% url 'home:update' board.pk %}" method="POST">
+        {% csrf_token %}
+        <label for="title">TITLE</label>
+        <input type="text" name="title" id="title" value="{{board.title}}"/><br>
+
+        <label for="content">CONTENT</label>
+        <input type="text" name="content" id="content" value="{{board.content}}"/><br>
+
+        <label for="content">FINISHED_AT</label>
+        <input type="date" name="finished_at" id="finished_at" value="{{board.finished_at | date:'Y-m-d' }}"/><br>
+
+        <input type="submit" value="Submit"/>
+        
+    </form>
+</body>
+</html>

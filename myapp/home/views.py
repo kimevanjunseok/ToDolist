@@ -15,7 +15,7 @@ def create(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         finished_at = request.POST.get('finished_at')
-        print(finished_at)
+
         if finished_at:
             board = Boards(title=title, content=content, finished_at=finished_at)
         else:
@@ -34,3 +34,29 @@ def detail(request, board_pk):
         'board': board,
     }
     return render(request, 'detail.html', context)
+
+def update(request, board_pk):
+    board = Boards.objects.get(pk=board_pk)
+    if request.method == "POST":
+        board.title = request.POST.get('title')
+        board.content = request.POST.get('content')
+        board.finished_at = request.POST.get('finished_at')
+
+        board.save()
+
+        return redirect('home:detail', board_pk)
+
+    else:
+        context = {
+            'board': board,
+        }
+        return render(request, 'update.html', context)
+
+def delete(request, board_pk):
+    board = Boards.objects.get(pk=board_pk)
+    if request.method == "POST":
+        board.delete()
+        return redirect('home:index')
+    else:
+        return redirect('home:detail', board_pk)
+        
