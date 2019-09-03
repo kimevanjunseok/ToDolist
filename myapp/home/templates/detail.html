@@ -10,6 +10,7 @@
     <a href="{% url 'home:update' board.pk %}">edit</a>
     <h2>{{ board.title }}</h2>
     <h3>{{ board.content }}</h3>
+    <h3>{{ board.priority }}</h3>
     <h3>{{ board.finished_at | date:'Y-m-d' }}</h3>
     <form action="{% url 'home:delete' board.pk %}" method="POST">
         {% csrf_token %}

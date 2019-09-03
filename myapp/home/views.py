@@ -14,12 +14,13 @@ def create(request):
         
         title = request.POST.get('title')
         content = request.POST.get('content')
+        priority = request.POST.get('priority')
         finished_at = request.POST.get('finished_at')
 
         if finished_at:
-            board = Boards(title=title, content=content, finished_at=finished_at)
+            board = Boards(title=title, content=content, priority=priority, finished_at=finished_at)
         else:
-            board = Boards(title=title, content=content)
+            board = Boards(title=title, content=content, priority=priority)
 
         board.save()
 
@@ -40,6 +41,7 @@ def update(request, board_pk):
     if request.method == "POST":
         board.title = request.POST.get('title')
         board.content = request.POST.get('content')
+        board.priority = request.POST.get('priority')
         board.finished_at = request.POST.get('finished_at')
 
         board.save()
