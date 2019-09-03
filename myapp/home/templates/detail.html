@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PROJECT</title>
+    <title>Document</title>
 </head>
 <body>
-    <a href="{% url 'home:create'%}">New Title</a>
-    {% for board in boards %}
-    <h2><a href="{% url 'home:detail' board.pk %}">{{ board.title }}</a></h2>
-    {% endfor %}
+    <h1></h1>
+    <h2>{{ board.title }}</h2>
+    <h3>{{ board.content }}</h3>
 </body>
 </html>
