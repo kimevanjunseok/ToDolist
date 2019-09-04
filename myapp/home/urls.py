@@ -10,4 +10,6 @@ urlpatterns = [
     path('detail/<int:board_pk>/', views.detail, name='detail'),
     path('create/', views.create, name='create'),
     path(r'', views.index, name='index'),
+    path('<str:string>/', views.not_exist_page_str, name='not_exist_page_str'),
+    path('<int:integer>/', views.not_exist_page_int, name='not_exist_page_int'),
 ]
