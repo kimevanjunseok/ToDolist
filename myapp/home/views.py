@@ -73,9 +73,5 @@ def completed_change(request, board_pk):
     board.save()
     return redirect('home:index')
 
-def not_exist_page_int(request, integer):
-    return render(request, 'not_exist_page_int.html')
-
-def not_exist_page_str(request, string):
-    return render(request, 'not_exist_page_str.html')
-
+def not_exist_page(request, value):
+    return render(request, 'not_exist_page.html')
