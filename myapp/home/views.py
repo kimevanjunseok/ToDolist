@@ -61,4 +61,14 @@ def delete(request, board_pk):
         return redirect('home:index')
     else:
         return redirect('home:detail', board_pk)
-        
+
+def completed_change(request, board_pk):
+    board = Boards.objects.get(pk=board_pk)
+    if board.completed:
+        board.completed = False
+    else:
+        board.completed = True
+    
+    board.save()
+    return redirect('home:index')
+
