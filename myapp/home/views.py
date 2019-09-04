@@ -42,7 +42,8 @@ def update(request, board_pk):
         board.title = request.POST.get('title')
         board.content = request.POST.get('content')
         board.priority = request.POST.get('priority')
-        board.finished_at = request.POST.get('finished_at')
+        if request.POST.get('finished_at'):
+            board.finished_at = request.POST.get('finished_at')
 
         board.save()
 

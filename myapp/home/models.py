@@ -3,7 +3,7 @@ from datetime import date, datetime
 
 Priorities = (
     (1, 'High'),
-    (2, 'Normal'),
+    (2, 'Medium'),
     (3, 'Low'),
 )
 
@@ -16,5 +16,8 @@ class Boards(models.Model):
     finished_at = models.DateTimeField(null=True, blank=True)
 
     def test(self):
-        self.finished_at = datetime.date(self.finished_at)
-        return date.today() > self.finished_at
+        if self.finished_at:
+            self.finished_at = datetime.date(self.finished_at)
+            return date.today() > self.finished_at
+        else:
+            return False

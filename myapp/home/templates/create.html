@@ -1,22 +1,45 @@
 {% extends 'base.html' %}
 {% block title %}NEW{% endblock %}
 {% block body %}
-    <h1>New Title</h1>
+    <h1 class="text-center mb-3">New Title</h1>
+    <hr>
     <form action="{% url 'home:create'%}" method="POST">
         {% csrf_token %}
-        <label for="title">TITLE</label>
-        <input type="text" name="title" id="title" maxlength="40"/><br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">*TITLE</span>
+            </div>
+            <input type="text" name="title" id="title" maxlength="40" class="form-control" placeholder="TITLE" aria-label="TITLE" required/>
+        
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">*PRIORITY</span>
+                    </div>
+                    <input type="number" name="priority" id="priority" min="1" max="3" class="form-control" placeholder="PRIORITY" aria-label="PRIORITY" required>
+                </div>
+            </div>
 
-        <label for="content">CONTENT</label>
-        <input type="text" name="content" id="content"/><br>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">DUE DAY</span>
+                    </div>
+                    <input type="date" name="finished_at" id="content" class="form-control" placeholder="DUE DAY" aria-label="DUE DAY">
+                </div>
+            </div>
+        </div>
 
-        <label for="content">PRIORITY</label>
-        <input type="number" name="priority" id="priority" min="1" max="3"/><br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">*CONTENT</span>
+            </div>
+            <textarea class="form-control" name="content" id="content" aria-label="With textarea" placeholder="CONTENT" aria-label="CONTENT" required></textarea>
+        </div>
 
-        <label for="content">FINISHED_AT</label>
-        <input type="date" name="finished_at" id="content"/><br>
-
-        <input type="submit" value="Submit"/>
+        <button class="btn btn-outline-secondary" type="submit">Submit</button>
 
     </form>
 {% endblock %}
