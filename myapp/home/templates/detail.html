@@ -1,45 +1,45 @@
 {% extends 'base.html' %}
-{% block title %}INDEX{% endblock %}
+{% block title %}DETAIL{% endblock %}
 {% block body %}
     <h1 class="text-center mb-3">DETAIL</h1>
     <hr>
     <form action="{% url 'home:update' board.pk %}">
-            {% csrf_token %}
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">*TITLE</span>
-                </div>
-                <input type="text" name="title" id="title" maxlength="40" value="{{board.title}}" class="form-control" placeholder="TITLE" aria-label="TITLE" readonly/>
-            
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">*TITLE</span>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">*PRIORITY</span>
-                        </div>
-                        <input type="number" name="priority" id="priority" min="1" max="3" value="{{board.priority}}" class="form-control" placeholder="PRIORITY" aria-label="PRIORITY" readonly>
+            <input type="text" name="title" id="title" maxlength="40" value="{{board.title}}" class="form-control" placeholder="TITLE" aria-label="TITLE" readonly/>
+        
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">*PRIORITY</span>
                     </div>
+                    <input type="number" name="priority" id="priority" min="1" max="3" value="{{board.priority}}" class="form-control" placeholder="PRIORITY" aria-label="PRIORITY" readonly>
                 </div>
-    
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">DUE DAY</span>
-                        </div>
-                        <input type="date" name="finished_at" id="content" class="form-control" value="{{board.finished_at | date:'Y-m-d' }}" placeholder="DUE DAY" aria-label="DUE DAY" readonly>
+            </div>
+
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">DUE DAY</span>
                     </div>
+                    <input type="date" name="finished_at" id="content" class="form-control" value="{{board.finished_at | date:'Y-m-d' }}" placeholder="DUE DAY" aria-label="DUE DAY" readonly>
                 </div>
             </div>
-    
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">*CONTENT</span>
-                </div>
-                <textarea class="form-control" name="content" id="content" aria-label="With textarea" placeholder="CONTENT" aria-label="CONTENT" readonly>{{board.content}}</textarea>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">*CONTENT</span>
             </div>
-    
-            <button class="btn btn-outline-success" type="submit">EDIT</button>
-            
-        </form>
+            <textarea class="form-control" name="content" id="content" aria-label="With textarea" placeholder="CONTENT" aria-label="CONTENT" readonly>{{board.content}}</textarea>
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">EDIT</button>
+        
+    </form>
 {% endblock %}

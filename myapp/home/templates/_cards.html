@@ -14,7 +14,7 @@
             </form>
             <h5 class="card-title"><a class="text-dark" href="{% url 'home:detail' board.pk %}">{{ board.title }}</a></h5>
         {% endif %}
-        
+
         {% if board.completed %}
             <a href="{% url 'home:completed_change' board.pk %}">MOVE TODO</a>
         {% else %}
