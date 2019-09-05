@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}NEW{% endblock %}
 {% block body %}
+<div class="container">
     <h1 class="text-center mb-3">New Title</h1>
     <hr>
     <form action="{% url 'home:create'%}" method="POST">
@@ -18,7 +19,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">*PRIORITY</span>
                     </div>
-                    <input type="number" name="priority" id="priority" min="1" max="3" class="form-control" placeholder="PRIORITY" aria-label="PRIORITY" required>
+                    <select name="priority" class="custom-select" id="inputGroupSelect01">
+                        <option value="1">HIGH</option>
+                        <option value="2">Medium</option>
+                        <option selected value="3">LOW</option>
+                    </select>
                 </div>
             </div>
 
@@ -42,4 +47,5 @@
         <button class="btn btn-outline-secondary" type="submit">Submit</button>
 
     </form>
+</div>
 {% endblock %}

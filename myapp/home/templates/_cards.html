@@ -2,7 +2,7 @@
     <div class="card-body">
         <form action="{% url 'home:delete' board.pk %}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');">
             {% csrf_token %}
-            <button type="submit" class="close" aria-label="Close">x</button>
+            <button type="submit" class="close" aria-label="Close" style="padding-left: 12px; padding-right: 12px;">x</button>
         </form>
         {% if board.test %}
             <h5 class="card-title"><a class="text-dark" href="{% url 'home:detail' board.pk %}"><del>{{ board.title }}</del></a></h5>
@@ -10,15 +10,39 @@
         {% else %}
             <h5 class="card-title"><a class="text-dark" href="{% url 'home:detail' board.pk %}">{{ board.title }}</a></h5>
         {% endif %}
-
-        
-        <a href="{% url 'home:completed_change' board.pk %}">
-            {% if board.completed %}
-                MOVE TODO
-            {% else %}
-                MOVE FINISHED
+        <hr>
+        <div class="row justify-content-between">
+            {% if board.completed == 1 or board.completed == 2 %}
+            <form action="{% url 'home:completed_change' board.pk %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="status" value="left">
+                    <div class="col-1">
+                        <button class="btn btn-outline-secondary card_button" type="submit"><i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </form>
             {% endif %}
-        </a>
 
+            <div class="col-1"></div>
+
+            {% if board.completed == 0 or board.completed == 1 %}
+            <form action="{% url 'home:completed_change' board.pk %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="status" value="right">
+                    <div class="col-1">
+                        <button class="btn btn-outline-secondary card_button" type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+   
     </div>
 </div>
+
+<style>
+.card {
+    border: 1px solid black;
+}
+.card_button {
+    border: none;
+}
+</style>

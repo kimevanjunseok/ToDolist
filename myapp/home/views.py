@@ -65,13 +65,16 @@ def delete(request, board_pk):
 
 def completed_change(request, board_pk):
     board = Boards.objects.get(pk=board_pk)
-    if board.completed:
-        board.completed = False
-    else:
-        board.completed = True
+    if request.method == "POST":
+        status = request.POST.get('status')
+        if status == "right":
+            board.completed += 1
+        else:
+            board.completed += -1
+        board.save()
     
-    board.save()
     return redirect('home:index')
+
 
 def not_exist_page(request, value):
     return render(request, 'not_exist_page.html')

@@ -2,21 +2,30 @@
 {% block title %}INDEX{% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col">
+        <div class="col-4">
             <h2 class="text-center">TODO</h2>
             <hr>
             {% for board in boards %}
-                {% if board.completed == False %}
-                {% include '_cards.html' %}
+                {% if board.completed == 0 %}
+                    {% include '_cards.html' %}
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="col">
+        <div class="col-4">
+            <h2 class="text-center">WORKING</h2>
+            <hr>
+            {% for board in boards %}
+                {% if board.completed == 1 %}
+                    {% include '_cards.html' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-4">
             <h2 class="text-center">FINISHED</h2>
             <hr>
             {% for board in boards %}
-                {% if board.completed == True %}
-                {% include '_cards.html' %}
+                {% if board.completed == 2 %}
+                    {% include '_cards.html' %}
                 {% endif %}
             {% endfor %}
         </div>
