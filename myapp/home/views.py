@@ -71,6 +71,12 @@ def completed_change(request, board_pk):
             board.completed += 1
         else:
             board.completed += -1
+
+        if board.completed > 2:
+            board.completed = 2
+        elif board.completed < 0:
+            board.completed = 0
+            
         board.save()
     
     return redirect('home:index')
