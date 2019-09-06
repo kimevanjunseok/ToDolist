@@ -2,7 +2,9 @@
     <li class="nav-item">
         <a class="nav-link active" href="{% url 'home:index' %}">HOME</a>
     </li>
+    {% if boards.count > 0 %}
     <li class="nav-item">
         <a class="nav-link" href="{% url 'home:create'%}">NEW TITLE</a>
     </li>
+    {% endif %}
 </ul>

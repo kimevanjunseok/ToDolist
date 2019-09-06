@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 {% block title %}INDEX{% endblock %}
 {% block body %}
+{% if boards.count == 0 %}
+{% include '_blank_cards.html' %}
+{% else %}
+    <div class="my-3" style="text-align:center">
+        PRIORITY: 
+        <span class="dot bg-danger"></span>HIGH 
+        <span class="dot bg-success"></span>Medium 
+        <span class="dot bg-primary"></span>Low
+    </div>    
     <div class="row">
         <div class="col-4">
             <h2 class="text-center">TODO</h2>
             <hr>
             {% for board in boards %}
                 {% if board.completed == 0 %}
-                    {% include '_cards.html' %}
+                    {% include '_list_cards.html' %}
                 {% endif %}
             {% endfor %}
         </div>
@@ -16,7 +25,7 @@
             <hr>
             {% for board in boards %}
                 {% if board.completed == 1 %}
-                    {% include '_cards.html' %}
+                    {% include '_list_cards.html' %}
                 {% endif %}
             {% endfor %}
         </div>
@@ -25,11 +34,11 @@
             <hr>
             {% for board in boards %}
                 {% if board.completed == 2 %}
-                    {% include '_cards.html' %}
+                    {% include '_list_cards.html' %}
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-    
+{% endif %}
 {% endblock %}
 

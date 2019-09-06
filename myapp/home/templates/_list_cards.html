@@ -1,10 +1,10 @@
-<div class="card my-1">
+<div class="card my-1" id="list_card{{ board.priority }}">
     <div class="card-body">
         <form action="{% url 'home:delete' board.pk %}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');">
             {% csrf_token %}
-            <button type="submit" class="close" aria-label="Close" style="padding-left: 12px; padding-right: 12px;">x</button>
+            <button type="submit" class="close" aria-label="Close" style="padding-left: 12px; padding-right: 12px;"><i class="fas fa-times"></i></button>
         </form>
-        {% if board.test %}
+        {% if board.deadline %}
             <h5 class="card-title"><a class="text-dark" href="{% url 'home:detail' board.pk %}"><del>{{ board.title }}</del></a></h5>
             <p class="text-danger">Deadline</p>
         {% else %}
@@ -39,8 +39,14 @@
 </div>
 
 <style>
-.card {
-    border: 1px solid black;
+.card#list_card1 {
+    border: 2px solid red;
+}
+.card#list_card2 {
+    border: 2px solid green;
+}
+.card#list_card3 {
+    border: 2px solid blue;
 }
 .card_button {
     border: none;

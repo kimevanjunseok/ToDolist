@@ -15,7 +15,7 @@ class Boards(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     finished_at = models.DateTimeField(null=True, blank=True)
 
-    def test(self):
+    def deadline(self):
         if self.finished_at:
             self.finished_at = datetime.date(self.finished_at)
             return date.today() > self.finished_at
